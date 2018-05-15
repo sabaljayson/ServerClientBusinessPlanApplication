@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="385.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.editStatusPage.editStatusController">
+   <children>
+      <ComboBox id="statusCombo" fx:id="editComboBox" layoutX="14.0" layoutY="14.0" prefWidth="150.0" promptText="edit status..." />
+      <Button id="statusOk" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" onAction="#confirmEdit" text="Ok" />
+      <Button id="statusCancel" layoutX="63.0" layoutY="52.0" mnemonicParsing="false" onAction="#confirmCancel" text="Cancel" />
+   </children>
+</Pane>

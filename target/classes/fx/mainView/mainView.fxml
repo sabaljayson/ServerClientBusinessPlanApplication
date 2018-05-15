@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.mainView.MainViewController">
+   <children>
+      <VBox layoutX="182.0" layoutY="92.0" prefHeight="200.0" prefWidth="243.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" />
+            <TextField id="UsernameBox" fx:id="usernameField" promptText="Enter Username" />
+            <PasswordField id="PasswordBox" fx:id="passwordField" promptText="Enter Password" />
+            <RadioButton fx:id="localhostChoice" mnemonicParsing="false" text="Local Host" />
+            <RadioButton fx:id="otherHostChoice" mnemonicParsing="false" text="Other" />
+            <Button id="LoginConfirm" fx:id="loginButton" mnemonicParsing="false" onAction="#accpetLogin" text="Login">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelLogin" text="Cancel" />
+         </children>
+      </VBox>
+   </children>
+</Pane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.homePage.HomePageController">
+   <children>
+      <ToolBar layoutX="14.0" layoutY="49.0" prefHeight="40.0" prefWidth="575.0">
+        <items>
+            <ComboBox id="YearCombo" fx:id="setYearChoice" prefHeight="26.0" prefWidth="110.0" promptText="Set Year" />
+            <Button id="SetStatus" fx:id="setStatusBtn" mnemonicParsing="false" onAction="#setStatusAction" text="Set Status" />
+            <Button id="EditView" fx:id="editViewBtn" mnemonicParsing="false" onAction="#editViewPlanAction" text="Edit/View" />
+            <Button id="Delete" fx:id="deleteBtn" mnemonicParsing="false" onAction="#deletePlanAction" text="Delete" />
+            <Button id="NewPlan" fx:id="cloneMakeBtn" mnemonicParsing="false" onAction="#clonePlanAction" text="Clone/Make Plan" />
+        </items>
+      </ToolBar>
+      <Button id="NewUserBtn" fx:id="addpeoplebtn" layoutX="21.0" layoutY="11.0" mnemonicParsing="false" onAction="#addpeopleAction" text="Add New User" />
+      <Button id="Logout" fx:id="logoutbtn" layoutX="524.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutAction" text="Logout" />
+      <TableView id="planTable" fx:id="plan_table" layoutX="23.0" layoutY="111.0" prefHeight="269.0" prefWidth="522.0">
+        <columns>
+          <TableColumn fx:id="plantitlecolumn" prefWidth="94.0" text="Plan Title" />
+          <TableColumn fx:id="yearcolumn" prefWidth="95.0" text="Year" />
+            <TableColumn fx:id="editstatuscolumn" prefWidth="95.0" text="Plan Status" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>
