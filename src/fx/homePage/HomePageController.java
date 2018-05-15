@@ -109,7 +109,6 @@ public class HomePageController {
 		cont.curryear = clone_year;
 		cont.currDepartment = model.getDepartment();
 		cont.currPlan = main.dep_plans;
-		System.out.println(cont.curryear);
 		// make a new plan if no plan was selected, or clone the plan selected
 //		int new_year = clonePlan(clone_year, model.getDepartment(), dep_plans);  ////////// --------------> go to clone plan scene also return a new year
 //		
@@ -148,7 +147,6 @@ public class HomePageController {
 				}
 			} catch (java.util.ConcurrentModificationException exception) {
 	            // Catch ConcurrentModificationExceptions.
-	            //System.out.print(exception);
 			}
 				
 		}
@@ -202,7 +200,6 @@ public class HomePageController {
 			}
 	
 			if (year != -1) {
-				System.out.println("this edit view action active year -1");
 				main.editPlan(year, main.dep_plans);
 			}
     	}
@@ -257,8 +254,7 @@ public class HomePageController {
     					;
     				}*/		
     				
-    				System.out.println(year);
-    				System.out.println(depart);	
+
     			}
         	}	
     	}
@@ -275,8 +271,6 @@ public class HomePageController {
 		//select year for plans // for combo box
 		main.dep_plans = new ArrayList<BP_Node>();
 		getLists(setYearChoice, main.dep_plans);
-//		System.out.println("set the homepage list");
-//		System.out.println(main.dep_plans);
 		departmentname.setText(model.getDepartment());
 		username.setText(model.getUsername());
 		plan_table.getColumns().clear();

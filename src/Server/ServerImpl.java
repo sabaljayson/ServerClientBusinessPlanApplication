@@ -2,17 +2,14 @@ package Server;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 //import javax.swing.Timer;
@@ -23,19 +20,15 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.w3c.dom.Document;
 
 import Client.ClientImpl;
 import Client.ViewingPlanPair;
 
-import java.awt.event.ActionListener;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
-import java.awt.event.ActionEvent;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
-import java.util.TimerTask;
-import java.util.Timer;
+
 
 
 public class ServerImpl implements ServerInterfaceRMI{
@@ -45,7 +38,7 @@ public class ServerImpl implements ServerInterfaceRMI{
 	LinkedList<BP_Node> businessPlans;
 	Person dummy = new Person("dummy","123","Math",true);
 	ArrayList<ViewingPlanPair<String, ClientImpl>> currClients;
-	private final static String host = "127.0.1.1";
+	//private final static String host = "127.0.1.1";
 	
 	//constructor
 	public ServerImpl() throws RemoteException {
@@ -55,6 +48,13 @@ public class ServerImpl implements ServerInterfaceRMI{
 		people.add(dummy);	
 		currClients  = new ArrayList<ViewingPlanPair<String,ClientImpl>>();
 	}
+	
+	
+	public String hello() {
+		return "Hellooo";
+	}
+	
+	
 	
 	//get the client viewing the plan
 	public ArrayList<ClientImpl> getAllClientinaBP(String bpinfo) throws RemoteException {
@@ -74,6 +74,7 @@ public class ServerImpl implements ServerInterfaceRMI{
 			System.out.println("the bpinfo passed does not have any client");
 		}
 		else {
+			System.out.println("I am notifing...");
 			for(int i = 0; i<clientlist.size();i++) {
 				String message = "The plan has been revised";
 				clientlist.get(i).notifyChanges(message);
@@ -109,7 +110,7 @@ public class ServerImpl implements ServerInterfaceRMI{
 			}
 		}
 		else {
-			System.out.println("creat new");
+			//System.out.println("creat new");
 			//create a new pair and add the client
 			ViewingPlanPair<String, ClientImpl> pair = new ViewingPlanPair<String, ClientImpl>(bpinfo);	
 			pair.addB(client);
@@ -408,7 +409,8 @@ public class ServerImpl implements ServerInterfaceRMI{
 			ServerInterfaceRMI stub = (ServerInterfaceRMI) UnicastRemoteObject.exportObject(obj,0);
 			
 			// Bind the remote object's stub in the registry
-			Registry registry = LocateRegistry.getRegistry();
+//			Registry registry = LocateRegistry.getRegistry();
+			Registry registry = LocateRegistry.createRegistry(1099);
 			registry.bind("server", stub); //name server need to be matched
 			
 			System.err.println("Server ready") ;
@@ -429,92 +431,7 @@ public class ServerImpl implements ServerInterfaceRMI{
 			}		
 			
 			
-			
-			CentrePlanFactory centreHead1 = new CentrePlanFactory();
-			BusinessEntity centreplan1 = centreHead1.nextLayer(null);
-			BusinessEntity mission_statement1 = centreplan1.createNewSubentity();
-			BusinessEntity department_statement1 = mission_statement1.createNewSubentity();
-			BusinessEntity goal1 = department_statement1.createNewSubentity();
-			BusinessEntity SLO1 = goal1.createNewSubentity();
-			SLO1.createNewSubentity();
-			BP_Node plan1 = new BP_Node(centreplan1,2016,"Math",true);
-			
-			CentrePlanFactory centreHead2 = new CentrePlanFactory();
-			BusinessEntity centreplan2 = centreHead2.nextLayer(null);
-			BusinessEntity mission_statement2 = centreplan1.createNewSubentity();
-			BusinessEntity department_statement2 = mission_statement2.createNewSubentity();
-			BusinessEntity goal2 = department_statement2.createNewSubentity();
-			BusinessEntity SLO2 = goal2.createNewSubentity();
-			SLO2.createNewSubentity();
-			BP_Node plan2 = new BP_Node(centreplan2,2015,"Math",true);
-			
-			CentrePlanFactory centreHead3 = new CentrePlanFactory();
-			BusinessEntity centreplan3 = centreHead3.nextLayer(null);
-			BusinessEntity mission_statement3 = centreplan3.createNewSubentity();
-			BusinessEntity department_statement3 = mission_statement3.createNewSubentity();
-			BusinessEntity goal3 = department_statement3.createNewSubentity();
-			BusinessEntity SLO3 = goal3.createNewSubentity();
-			SLO3.createNewSubentity();
-			BP_Node plan3 = new BP_Node(centreplan3,2014,"Math",true);
-			
-			stub.addBP_Node(plan1);
-			stub.addBP_Node(plan2);
-			stub.addBP_Node(plan3);
-			
-			CentrePlanFactory centreHead4 = new CentrePlanFactory();
-			BusinessEntity centreplan4 = centreHead4.nextLayer(null);
-			BusinessEntity mission_statement4 = centreplan4.createNewSubentity();
-			BusinessEntity department_statement4 = mission_statement4.createNewSubentity();
-			BusinessEntity goal4 = department_statement4.createNewSubentity();
-			BusinessEntity SLO4 = goal4.createNewSubentity();
-			SLO4.createNewSubentity();
-			BP_Node plan4 = new BP_Node(centreplan4,2016,"Computer Science",true);
-			
-			CentrePlanFactory centreHead5 = new CentrePlanFactory();
-			BusinessEntity centreplan5 = centreHead5.nextLayer(null);
-			BusinessEntity mission_statement5 = centreplan5.createNewSubentity();
-			BusinessEntity department_statement5 = mission_statement5.createNewSubentity();
-			BusinessEntity goal5 = department_statement5.createNewSubentity();
-			BusinessEntity SLO5 = goal5.createNewSubentity();
-			SLO5.createNewSubentity();
-			BP_Node plan5 = new BP_Node(centreplan5,2015,"Computer Science",true);
-			
-			CentrePlanFactory centreHead6 = new CentrePlanFactory();
-			BusinessEntity centreplan6 = centreHead6.nextLayer(null);
-			BusinessEntity mission_statement6 = centreplan6.createNewSubentity();
-			BusinessEntity department_statement6 = mission_statement6.createNewSubentity();
-			BusinessEntity goal6 = department_statement6.createNewSubentity();
-			BusinessEntity SLO6 = goal6.createNewSubentity();
-			SLO6.createNewSubentity();
-			BP_Node plan6 = new BP_Node(centreplan6,2014,"Computer Science",true);
-			
-			stub.addBP_Node(plan4);
-			stub.addBP_Node(plan5);
-			stub.addBP_Node(plan6);
-			
-			Person p1 = new Person("q","1","Math",true);
-			Person p2 = new Person("w" ,"2","Computer Science",true);
-			
-			stub.addPerson(p1);
-			stub.addPerson(p2);
-			
-			stub.writeDisk();
-			
-			System.out.println("starter running done");
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 			
 		} catch(Exception e) {
 			System.err.println("Server exception: " + e.toString()) ;

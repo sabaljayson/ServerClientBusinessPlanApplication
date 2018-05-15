@@ -1,18 +1,13 @@
 package Server;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
+
 
 import Client.ClientImpl;
 
 public class Starter
 {
-	private final static String host = "127.0.1.1";
+	//private final static String host = "127.0.1.1";
 	public static ServerInterfaceRMI server;
 	//static ServerInterfaceRMI stub;
 	public ClientImpl client;
@@ -20,27 +15,6 @@ public class Starter
 	
 	
 	public Starter() {
-
-//		Registry registry;
-//		try {
-//			
-//			ServerImpl obj = new ServerImpl();
-//			server = (ServerInterfaceRMI) UnicastRemoteObject.exportObject(obj,0);
-//			registry = LocateRegistry.createRegistry(1099);
-//			registry.rebind("server", server);
-//			
-////			registry = LocateRegistry.getRegistry("");
-//////			registry = LocateRegistry.createRegistry(1099);
-////			this.server = (ServerInterfaceRMI) registry.lookup("server");
-//			this.client = new ClientImpl(server);
-//			
-//			System.err.println("Client ready") ;
-////			System.out.println(server);
-//			
-//		} catch (RemoteException e) {
-//			System.err.println("Client exception: " + e.toString()) ;
-//			e.printStackTrace();
-//		}	
 		
 		try {
 			server = new ServerImpl();
@@ -51,24 +25,7 @@ public class Starter
 		
 	}
 	
-	
-	void setupServer() {
-		try {
-			ServerImpl realServer = new ServerImpl();
-			
-			
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	void tearupServer() {
-		server = null;
-	}
-	
-
-	
-	
+		
 	
 	/// this creates 6 plans and 2 users
 	public static void main(String[] args)
@@ -76,7 +33,6 @@ public class Starter
 			try {				
 				Starter starter = new Starter();
 				
-				System.out.println(starter.server);
 				CentrePlanFactory centreHead1 = new CentrePlanFactory();
 				BusinessEntity centreplan1 = centreHead1.nextLayer(null);
 				BusinessEntity mission_statement1 = centreplan1.createNewSubentity();
@@ -150,6 +106,8 @@ public class Starter
 				System.out.println("login account: "+server.getPeople().get(1).username+" "+server.getPeople().get(1).password);
 				System.out.println("starter running done");
 				
+				ClientImpl client = new ClientImpl(server);
+				client.login("q", "1");
 						
 				
 			} catch (RemoteException e) {

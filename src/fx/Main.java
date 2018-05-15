@@ -16,12 +16,9 @@ import fx.model.Model;
 import fx.newOrClonePlanPage.newOrClonePlanController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -157,11 +154,10 @@ public class Main extends Application {
 				//change to edit scene!!
 				Scene newscene = this.viewPlanPage();
 				this.window.setScene(newscene);
-				System.out.println("change to edit scene");
+
 				
 			}
 
-			System.out.println("prepare ! edit scene");
 		}
 	
 	
@@ -192,9 +188,7 @@ public class Main extends Application {
 	
 	 public boolean checkDuplicate(int year) {
 	    	for(int i = 0; i< this.dep_plans.size(); i ++) {
-	    		System.out.println(this.dep_plans.get(i).year);
 	    		if(this.dep_plans.get(i).year == year) {
-	    			System.out.println("matched");
 	    			return true;
 	    		}
 	    	}

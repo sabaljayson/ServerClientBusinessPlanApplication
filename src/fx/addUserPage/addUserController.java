@@ -7,9 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 
 public class addUserController {
@@ -37,14 +35,12 @@ public class addUserController {
 
     @FXML
     void adduserbackAction(ActionEvent event) {
-    	//System.out.println("back!");
     	Scene homepage = main.homePage();
     	main.window.setScene(homepage);
     }
     
     @FXML
     void confirmnewuserAction(ActionEvent event) {
-    	System.out.println("confirm");
     	
     	String errorMessage = "";
     	if(usernameInput.getText().length() == 0) {

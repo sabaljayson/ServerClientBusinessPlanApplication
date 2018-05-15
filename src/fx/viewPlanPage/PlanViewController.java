@@ -25,6 +25,7 @@ import fx.ICommand;
 import fx.Invoker;
 import fx.Main;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.Optional;
@@ -34,6 +35,10 @@ import Server.Person;
 
 
 public class PlanViewController {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Main main;
 	Model model;
 	String filledtext; //plan.getStatement(0).getStatement()
@@ -197,7 +202,7 @@ public class PlanViewController {
     	else {
 	    	this.currcomments.add(info);
 	    	String title = this.newValueref.getValue().getEntityTitle();
-	    	System.out.println(this.newValueref.getValue().comments);
+	    	//System.out.println(this.newValueref.getValue().comments);
 			this.newValueref.getValue().setComments(this.currcomments);
 			model.uploadBP(model.getBusiness());
 	    	// write to server and read
@@ -261,14 +266,14 @@ public class PlanViewController {
 
 
     public void addSectionFcn(BusinessEntity currSelection, TreeItem<BusinessEntity> selection) {
-    		System.out.println("undo adding component");
+    		//System.out.println("undo adding component");
     	 	BusinessEntity plan = model.getEntity(); 
-    	 	System.out.println("current tree item selection: "+selection);
-    	 	System.out.println("current selection business enetity: "+currSelection);
+    	 	//System.out.println("current tree item selection: "+selection);
+    	 	//System.out.println("current selection business enetity: "+currSelection);
 //		   	BusinessEntity new_plan = currSelection.createNewSubentity();
 		   	BusinessEntity new_plan = selection.getValue().createNewSubentity();
-		   	System.out.println("create new component: ");
-		   	System.out.println(new_plan.getEntityTitle());
+		   //	System.out.println("create new component: ");
+		   	//System.out.println(new_plan.getEntityTitle());
 			// set the factory to be the same depth as the factory in centreplanfactory
 			new_plan.setEntityFactory(centreHead1.getFactoryFromIndex(new_plan.getTree_level() + 1));
 			/// new tree view
@@ -291,7 +296,7 @@ public class PlanViewController {
     	}
     	else {
 	    	plan.setEntityTitle(newEntityTitle);
-	    	System.out.println(plan.getEntityTitle());
+	    	//System.out.println(plan.getEntityTitle());
 	    	/// need the root of the tree
 	    	BusinessEntity head = getHead(plan);
 	    	model.setEntity(head);
@@ -316,12 +321,12 @@ public class PlanViewController {
 
 	
 	public void delectSecFcn(BusinessEntity plan) {
-		System.out.println("I am delecting..."+plan.getEntityTitle());
+		//System.out.println("I am delecting..."+plan.getEntityTitle());
 		if (plan.getParentEntity() != null)
 		{
 			this.newValueref = this.treeItemSelection;
 			/// remove current entity from parents children
-			System.out.println("before: "+plan.getParentEntity().getSubentities());
+			//System.out.println("before: "+plan.getParentEntity().getSubentities());
 			ArrayList<BusinessEntity> entities = plan.getParentEntity().getSubentities();
 			entities.remove(plan);
 			
@@ -335,7 +340,7 @@ public class PlanViewController {
 			plan.getParentEntity().setSubentities(entities);
 			
 			plan.getParentEntity().getSubentities().clear(); //has to clear again somehow
-			System.out.println("after: "+plan.getParentEntity().getSubentities());
+			//System.out.println("after: "+plan.getParentEntity().getSubentities());
 			// new retrevie without the node
 			this.treeview.setRoot(showPlan(plan, new TreeItem<BusinessEntity>()));
 
@@ -352,7 +357,7 @@ public class PlanViewController {
 		// takes component out of parent entities subentities
 		//this.currPlan = model.getEntity();
 		BusinessEntity plan = this.currPlan;
-		System.out.println(plan.getEntityTitle());
+		//System.out.println(plan.getEntityTitle());
 		if (this.currPlan.getParentEntity() != null)
 		{
 			
@@ -433,7 +438,7 @@ public class PlanViewController {
 	    	main.window.setScene(refresh);
 		}
 		
-		this.model.removeClient();
+		this.model.removeClient(); //remove theirselves from the server when finishing viewing the plan
 
     }
 
@@ -481,7 +486,7 @@ public class PlanViewController {
     		this.currPerson = model.getPerson();
     		
     		
-    		this.model.addClient();
+    		this.model.addClient(); //register the client to the server as person currently viewing the plan
     		
     		
     		
@@ -499,7 +504,7 @@ public class PlanViewController {
     	
     	else {
 	    	if (newValue.getParent() != null) {
-	    		System.out.println("parent: "+newValue.getParent().getValue().getEntityTitle());
+	    		//System.out.println("parent: "+newValue.getParent().getValue().getEntityTitle());
 	    		this.treeItemSelection = newValue.getParent();
 	    	}
 	    	

@@ -1,10 +1,10 @@
 package fx.model;
 
+import java.io.Serializable;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import Client.ClientImpl;
@@ -13,19 +13,18 @@ import Server.BusinessEntity;
 import Server.Person;
 import Server.ServerImpl;
 import Server.ServerInterfaceRMI;
-import Server.ServerStarter;
-import Server.Starter;
 import fx.ICommand;
 
-public class Model {
+public class Model implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Person currPerson;
 	ICommand command;
 	
 	ClientImpl client;
-	//private final static String host = "127.0.1.1";
-	//ServerImpl server;
-	//static ServerInterfaceRMI stub;
 
 	
 	void setupServer() {
@@ -41,36 +40,9 @@ public class Model {
 	
 	
 	public Model() {
-//		Registry registry;
-//		try {
-//			registry = LocateRegistry.getRegistry(host);
-//			ServerInterfaceRMI stub = (ServerInterfaceRMI) registry.lookup("server");
-//			client = new ClientImpl(stub);
-//			client.proxy.readDisk();
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		} catch (NotBoundException e) {
-//			e.printStackTrace();
-//		}
-		
-//		ServerImpl obj;
-		//			obj = new ServerImpl();
-		//			stub  = (ServerInterfaceRMI) UnicastRemoteObject.exportObject(obj,0);
-		//			client = new ClientImpl(stub);
-		
-		
-		
-		
-//					Starter starter = new Starter();
-//					//sstarter.setup();
-//					client = starter.client;
-//					Person person = new Person("q","1","Math",true);
-//					
-//					System.out.println(client);
-//					System.out.println(starter);
 		
 		this.clientRegistry();
-		System.out.println(this.client);
+//		System.out.println("test if model has a client "+this.client);
 		
 
 	}
@@ -78,9 +50,11 @@ public class Model {
 	
 	public void clientRegistry(){	
 		Registry registry;
-		try {
+		try {			
 			registry = LocateRegistry.getRegistry("");
+					
 			ServerInterfaceRMI server = (ServerInterfaceRMI) registry.lookup("server");
+//			System.out.println("if model get the server"+server);
 			this.client = new ClientImpl(server);
 			
 			System.err.println("Client ready") ;
@@ -109,6 +83,8 @@ public class Model {
 	}
 	
 	public void notifyChanges(String message) {
+		//System.out.println(message+" within model");
+		this.client.model = this;
 		this.command.execute(message);
 	}
 	
@@ -127,7 +103,7 @@ public class Model {
 	public Person loginAction(String username, String password, boolean local, boolean selectHost) {
 		
 		client.login(username, password);
-		System.out.println("look up...person..."+client.person);
+//		System.out.println("look up...person..."+client.person);
 		if (client.person != null) {
 			this.currPerson = client.person;
 			return client.person;
@@ -191,7 +167,7 @@ public class Model {
 	}
 	
 	public void make_CloneBP(int year, String department, boolean editable,int new_year) {
-		System.out.println("make clone clinet");
+		//System.out.println("make clone clinet");
 		client.make_CloneBP(year, department, editable, new_year);
 	}
 	

@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.rmi.NotBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -19,7 +20,7 @@ import Server.Person;
 import Server.ServerInterfaceRMI;
 import fx.model.Model;
 
-public class ClientImpl  implements Serializable {
+public class ClientImpl implements  ClientInterfaceRMI , Serializable  {
 	/**
 	 * 
 	 */
@@ -32,11 +33,23 @@ public class ClientImpl  implements Serializable {
 	
 	public ClientImpl(ServerInterfaceRMI proxy){
 		this.proxy = proxy;
+		
+		try {
+			String hello = this.proxy.hello();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public ClientImpl(ServerInterfaceRMI proxy, Model model){
 		this.proxy = proxy;
 		this.model = model;
+		
+		try {
+			String hello = this.proxy.hello();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void setModel(Model model) {
@@ -44,10 +57,12 @@ public class ClientImpl  implements Serializable {
 	}
 	
 	public void notifyChanges(String message) {
-		System.out.println(this.person.username+" <- "+message);
-		currentMessage = message;
+//		System.out.println(this.person.username+" <- "+message);
+		this.currentMessage = message;
 		
+		System.out.println("The client has a model? "+ model);
 		if(model!= null) {
+			System.out.println("The client has a model "+ model);
 			this.model.notifyChanges(message);
 		}
 
@@ -69,7 +84,7 @@ public class ClientImpl  implements Serializable {
 	public void addClient() {
 		try {
 			
-			System.out.println(this);
+			//System.out.println(this);
 			proxy.addClient(this.business.getDepartment()+this.business.getYear(), this);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -220,7 +235,7 @@ public class ClientImpl  implements Serializable {
 	
 	public static void main(String[] args){	
 		Registry registry;
-		try {
+		try {			
 			registry = LocateRegistry.getRegistry("");
 			ServerInterfaceRMI server = (ServerInterfaceRMI) registry.lookup("server");
 			ClientImpl client = new ClientImpl(server);

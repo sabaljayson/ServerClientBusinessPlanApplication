@@ -38,5 +38,5 @@ public interface ServerInterfaceRMI extends Remote  {
 	public void readDisk() throws RemoteException;
 	public void writeDisk() throws RemoteException;
 	
-	
+	public String hello() throws RemoteException;
 }

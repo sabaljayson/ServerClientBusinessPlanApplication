@@ -97,5 +97,30 @@
     </void>
    </object>
   </void>
+  <void method="add">
+   <object class="Server.Person" id="Person3">
+    <void class="Server.Person" method="getField">
+     <string>username</string>
+     <void method="set">
+      <object idref="Person3"/>
+      <string>123</string>
+     </void>
+    </void>
+    <void class="Server.Person" method="getField">
+     <string>password</string>
+     <void method="set">
+      <object idref="Person3"/>
+      <string>123</string>
+     </void>
+    </void>
+    <void class="Server.Person" method="getField">
+     <string>department</string>
+     <void method="set">
+      <object idref="Person3"/>
+      <string>123</string>
+     </void>
+    </void>
+   </object>
+  </void>
  </object>
 </java>

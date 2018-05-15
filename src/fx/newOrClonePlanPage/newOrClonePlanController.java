@@ -169,7 +169,7 @@ public class newOrClonePlanController {
 	    				
 	    		//clone or make plans	
 	    		main.data = getCloneData(yearInput, statusChoice); //set the data in main here!! in case null pointer
-	    		System.out.println(main.data);
+	    		//System.out.println(main.data);
 	    		this.locateplan();
 	    		
 	    		Scene homepage = main.homePage();
