@@ -38,6 +38,7 @@ public class Main extends Application {
 	// Clone Data for if the client wants to clone a plan
 	public ArrayList<String> data = new ArrayList<String>();
 	
+	//load the login scene
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.window = primaryStage;
@@ -61,6 +62,8 @@ public class Main extends Application {
 	
 	}
 	
+	
+	//utility function to go to a specific scene
 	public Scene backtoLogin() {
 		return loginscene;
 	}
@@ -68,16 +71,9 @@ public class Main extends Application {
 	public Scene backtoHomePage() {
 		return homepagescene;
 	}
-
-	public static void notifychanges() {
-		System.out.println("123 main");
-//		Platform.runLater(() ->{
-//			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//			alert.setHeaderText("notify! the plan has a new version");
-//			alert.showAndWait();
-//		});
-	}
 	
+
+	//load the homepage 
 	public Scene homePage()  {
 	     try {
 	    	 	FXMLLoader loader = new FXMLLoader();
@@ -104,6 +100,7 @@ public class Main extends Application {
 		
 	}
 
+	//load the add user page
 	public Scene addUserPage()  {
 	     try {
 	    	 	FXMLLoader loader = new FXMLLoader();
@@ -124,7 +121,7 @@ public class Main extends Application {
 	     return adduserscene;	
 	}
 	
-	
+	// get the viewing plan page also the edit plan page
 	public Scene viewPlanPage()  {
 	     try {
 	    	 	FXMLLoader loader = new FXMLLoader();
@@ -173,10 +170,8 @@ public class Main extends Application {
 		}
 	
 	
-	
-	
-	
-	
+		
+	//get the clone plan page - the return is actully not been used
 	public Pair<Scene, newOrClonePlanController> clonePlanPage()  {
 	     try {
 	    	 	FXMLLoader loader = new FXMLLoader();
@@ -199,8 +194,7 @@ public class Main extends Application {
 	}
 	
 
-	
-	
+	//check if the new plan input year is duplicate
 	 public boolean checkDuplicate(int year) {
 	    	for(int i = 0; i< this.dep_plans.size(); i ++) {
 	    		if(this.dep_plans.get(i).year == year) {
@@ -210,6 +204,8 @@ public class Main extends Application {
 	    	return false;
 	    }
 	
+	 
+	//load the edit plan status scene
 	public Scene editStatus(BP_Node Plan) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -236,9 +232,11 @@ public class Main extends Application {
 		
 		}	
 	
+	
+	
+	//the main that launch the arg  - the thread is not used
 	public static void main(String[] args) {
 		
-
 		//Application.launch(Main.class, (java.lang.String[])null);
 		Main main = new Main();
         
@@ -274,5 +272,14 @@ public class Main extends Application {
 //		thread2.start();
 		
     }
+	
+	public static void notifychanges() {
+		System.out.println("123 main");
+//		Platform.runLater(() ->{
+//			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//			alert.setHeaderText("notify! the plan has a new version");
+//			alert.showAndWait();
+//		});
+	}
 
 }

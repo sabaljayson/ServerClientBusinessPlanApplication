@@ -1,3 +1,7 @@
+link to git: https://code.centre.edu/zeyang/Sprint5_RMI
+
+git@code.centre.edu:zeyang/Sprint5_RMI.git
+
 If you want to run the GUI:
 1. run "ServerImpl.java" under the server package -  "server ready" should be shown in the console
 2. run "Starter.java" under the server package - "login: q 1 \n starter running done" should be shown in the console
@@ -5,20 +9,35 @@ If you want to run the GUI:
 
 If you want to run the test:
 1. go to fx.test.Sprint5Test package
+
 	if you want to run the Part 1 test:
+
 		1. kill the server 
 		2. open "Part1RMITest.java" and run
+
+
 	if you want to run the Part 2 test:
+
+		0. kill the server
 		1. run "ServerImpl.java" under the server package -  "server ready" should be shown in the console
 		2. run "Starter.java" under the server package - "login: q 1 \n starter running done" should be shown in the console
-		3. open "Part2CommentTest.java" and run
+		3. run "ClientImpl.java" under the server package - "client ready" should be shown in the console
+		4. open "Part2CommentTest.java" and run //there are more tests on comments in part 3 test
+
+
 	if you want to run the Part 3 test:
 		if you already run part 2 test:
+
 			open "Part3UndoSceneTest.java" and run
+
 		else:
+			
+			0. kill the server
 			1. run "ServerImpl.java" under the server package -  "server ready" should be shown in the console
 			2. run "Starter.java" under the server package - "login: q 1 \n starter running done" should be shown in the console
+			3. run "ClientImpl.java" under the server package - "client ready" should be shown in the console
 			3. open "Part3UndoSceneTest.java" and run
+
 
 
 Design doc for Part 1: 
@@ -32,6 +51,7 @@ https://docs.google.com/document/d/1DZ9bWWqcibmSv8SvNUy1PCT8WwQzgLLBqbLU1Pt0-kw/
 
 PowerPoint for Sprint 5:
 https://docs.google.com/presentation/d/1KwopLJwss9mslX6zbNeleQWUfuk8aUpDRk2MhYeuDoI/edit?usp=sharing
+
 
 
 '''

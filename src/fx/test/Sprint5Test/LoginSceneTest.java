@@ -10,8 +10,11 @@ import javafx.scene.input.KeyCombination;
 
 import fx.test.TextFXBase;
 
-public class LoginSceneTest extends TextFXBase {
 
+
+//the test for sprint 4 test other functions in the gui 
+public class LoginSceneTest extends TextFXBase {
+	
 	
 	//Login Screen ID's
 	final String LoginBtn_ID = "#LoginConfirm";

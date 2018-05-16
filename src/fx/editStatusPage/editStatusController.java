@@ -30,6 +30,7 @@ public class editStatusController {
 		this.main=main;
     }
     
+	//set up the content in the box
     @FXML
     private ComboBox<String> editComboBox;
     
@@ -43,18 +44,20 @@ public class editStatusController {
 
     }
     
+    //get the plan 
     public void getPlan(BP_Node Plan) {
     	current_plan = Plan;
     }
     
     
-    
+    //go to the homepage
     @FXML
     void confirmCancel(ActionEvent event) {
     	Scene homepage = main.homePage();
     	main.window.setScene(homepage);
     }
 
+    //edit the status and save to the server
     @FXML
    public void confirmEdit(ActionEvent event) {
     	ArrayList<String> data= new ArrayList<String>();

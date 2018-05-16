@@ -29,48 +29,15 @@ public class Model implements Serializable {
 
 	
 	
-	
-	void setupServer() {
-		try {
-			ServerImpl realServer = new ServerImpl();
-			
-			
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
-	
-	public Model() {
-		
+	//call the method to register the client
+	public Model() {		
 		this.clientRegistry();
-//		System.out.println("test if model has a client "+this.client);
 		
 
 	}
 	
-//	public static void notifychanges() {
-//		System.out.println("123 model");
-////		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-////		alert.setHeaderText("notify! the plan has a new version");
-////		alert.showAndWait();
-//	}
-//	
-//	
-//	
-//	public String returnNotifyMessage() {
-//		System.out.println("in model keep checking... "+this.client.notifyChanges(null));
-//		if(this.command != null) {
-//			this.command.execute(this.client.returnNotifyMessage());
-//		}
-//		return this.client.returnNotifyMessage();
-//	}
-//	
 	
-	
-	
-	
+	//look up the server and create the client
 	public void clientRegistry(){	
 		Registry registry;
 		try {			
@@ -100,11 +67,12 @@ public class Model implements Serializable {
 		this.command = command;
 	}
 	
-	public void signalChange() {
-		
+	//pass the signal when something changes
+	public void signalChange() {	
 		this.client.signalChange();
 	}
 	
+	//execue the command to alert
 	public void notifyChanges(String message) {
 		System.out.println(message+" within model");
 		if(this.client.currentMessage != null) {
@@ -122,8 +90,6 @@ public class Model implements Serializable {
 	}
 	
 
-
-	
 	/// logs in user, otherwise no change
 	public Person loginAction(String username, String password, boolean local, boolean selectHost) {
 		
@@ -137,6 +103,7 @@ public class Model implements Serializable {
 		return null;
 	}
 	
+	//utility functions below --- just pass info to the client ------------
 	
 	public Person getPerson() {
 		return this.currPerson;
@@ -233,6 +200,18 @@ public class Model implements Serializable {
 			e.printStackTrace();
 		}
 	}
+	
+	void setupServer() {
+		try {
+			ServerImpl realServer = new ServerImpl();
+			
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	
 	

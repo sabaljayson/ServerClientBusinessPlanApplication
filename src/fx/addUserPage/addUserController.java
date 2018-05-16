@@ -33,12 +33,14 @@ public class addUserController {
     @FXML
     private Button backbtn;
 
+    //go back to the home page
     @FXML
     void adduserbackAction(ActionEvent event) {
     	Scene homepage = main.homePage();
     	main.window.setScene(homepage);
     }
     
+    //confirm the add user and add to the server
     @FXML
     void confirmnewuserAction(ActionEvent event) {
     	
@@ -81,6 +83,7 @@ public class addUserController {
 		this.main=main;
     }
 
+    //set up the choice in the choice box
 	public void setModel(Model model)
 	{
 		this.model = model;

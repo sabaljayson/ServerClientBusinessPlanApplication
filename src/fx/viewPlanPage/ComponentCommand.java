@@ -20,6 +20,7 @@ public class ComponentCommand implements ICommand{
 		this.selection = selection;
 	}
 
+	//the command to add or remove component
 	@Override
 	public void execute(String command) {
 		if(command.equals("undo")) {

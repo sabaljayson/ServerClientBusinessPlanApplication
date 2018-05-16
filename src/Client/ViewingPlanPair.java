@@ -3,6 +3,8 @@ package Client;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+// a genetic pair designed to save a string(object) and an arraylist of objects
+// for this case, it saves a string that represents the information of business plans and a list of clients that currently viewing the plan
 public class ViewingPlanPair<A,B>  implements Serializable{
     /**
 	 * 

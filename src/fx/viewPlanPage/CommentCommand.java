@@ -15,6 +15,7 @@ public class CommentCommand implements ICommand{
 		this.commentinfo = cont.commentshow.getText();
 	}
 
+	//determing the action by the string passed
 	@Override
 	public void execute(String command) {
 		if(command.equals("undo")) {

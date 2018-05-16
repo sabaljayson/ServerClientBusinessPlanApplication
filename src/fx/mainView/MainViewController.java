@@ -41,6 +41,7 @@ public class MainViewController {
     @FXML
     private RadioButton otherHostChoice;
 
+    //log in in the server
     @FXML
     void accpetLogin(ActionEvent event) {
     	String errorMessage = "";

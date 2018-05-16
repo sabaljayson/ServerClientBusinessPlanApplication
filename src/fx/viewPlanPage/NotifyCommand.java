@@ -17,7 +17,7 @@ public class NotifyCommand implements ICommand, Serializable{
 		this.cont = cont;
 	}
 	
-	
+	//call the alert pop window
 	@Override
 	public void execute(String command) {
 		if(command != null) {

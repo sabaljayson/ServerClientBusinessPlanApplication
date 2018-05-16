@@ -14,6 +14,8 @@ public interface ClientInterfaceRMI extends Remote {
 	public void setMessage(String message) throws RemoteException;
 	public void addClient() throws RemoteException;
 	public void removeClient() throws RemoteException;
+	public void signalChange() throws RemoteException;;
+	
 	public void login(String username, String password) throws RemoteException;
 	public void requestBusinessPlan(String department, int year) throws RemoteException;
 	public void writeLocalBP(BP_Node business) throws RemoteException;

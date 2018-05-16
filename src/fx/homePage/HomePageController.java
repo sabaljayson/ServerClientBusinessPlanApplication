@@ -244,15 +244,6 @@ public class HomePageController {
     				Scene editStatus = main.editStatus(selected_plan);
     				main.window.setScene(editStatus);
     				
-    				/*editStatusController cont = new editStatusController();
-    				cont.getPlan(selected_plan);
-    				
-    				if (cont.isComboSet()==true) {
-    					cont.confirmEdit(event);
-    				}
-    				else {
-    					;
-    				}*/		
     				
 
     			}

@@ -37,7 +37,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 	ClientInterfaceRMI clientinter;
 	
 	
-	
+	//Constructor that make the client remote
 	public ClientImpl(ServerInterfaceRMI proxy){
 		this.proxy = proxy;
 		
@@ -50,6 +50,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		}
 	}
 	
+	//another way to initiate a client with a model
 	public ClientImpl(ServerInterfaceRMI proxy, Model model){
 		this.proxy = proxy;
 		this.model = model;
@@ -61,18 +62,20 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		}
 	}
 	
+	
+	//set the model
 	public void setModel(Model model) {
 		this.model = model;
 	}
 	
+	//being notified after there is a change  | message - "the plan has been revised"
 	public String notifyChanges(String message) {
 		this.currentMessage = message;
 		System.out.println("current message - " + this.currentMessage);
 		
 //		PlanViewController.alertPop(message);
 //		PlanViewController.notifychanges();
-		
-//		System.out.println("The client has a model "+ this.model);
+
 		if(this.model!= null) {
 			System.out.println("The client has a model "+ this.model);
 			this.model.notifyChanges(message);
@@ -81,17 +84,20 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 
 	}
 	
+	
+	//getter for current message
 	public String returnNotifyMessage() {
 		return this.currentMessage;
 	}
 	
 	
-	
+	//setter for current message
 	public void setMessage(String message) {
 		this.currentMessage = message;
 		
 	}
 	
+	//if this client clicked save, signal the server to notify
 	public void signalChange() {
 		try {
 			this.proxy.signalChange(this.business.department+this.business.year);
@@ -100,6 +106,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		}
 	}
 	
+	//register client themselves in the server
 	public void addClient() {
 		try {
 			
@@ -198,7 +205,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		writeLocalBP(business);
 	}
 	
-	
+	//clone the business plan
 	public void make_CloneBP(int year, String department, Boolean editable, int new_year){
 
 		try {
@@ -210,6 +217,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		writeLocalBP(business);
 	}
 	
+	//set the businee plan's status
 	public void setBPStatus(BP_Node businessPlan, boolean editable){
 		try {
 			proxy.setEditStatus(businessPlan, editable);
@@ -218,6 +226,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		}
 	}
 	
+	//upload the business plan to the server
 	public void uploadBP(BP_Node businessPlan){
 		try {
 			proxy.addBP_Node(businessPlan);
@@ -226,6 +235,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		}
 	}
 	
+	//delete the business plan
 	public void deleteBP(BP_Node businessPlan){
 		try {
 			proxy.deleteBP_Node(businessPlan);
@@ -234,6 +244,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		}
 	}
 	
+	//get the business plan
 	public LinkedList<BP_Node> getBP() {
 		try {
 			return proxy.getBP();
@@ -243,6 +254,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		return null;
 	}
 	
+	//get the signuped people in the server
 	public LinkedList<Person> getPeople(){
 		try {
 			return proxy.getPeople();
@@ -252,6 +264,7 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 		return null;
 	}
 	
+	//get the registry and set up the connection
 	public static void main(String[] args){	
 		Registry registry;
 		try {			
