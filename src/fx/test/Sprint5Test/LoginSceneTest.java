@@ -1,4 +1,4 @@
-package fx.test.SceneTest;
+package fx.test.Sprint5Test;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 

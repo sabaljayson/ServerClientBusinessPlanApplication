@@ -10,7 +10,7 @@ import fx.model.Model;
 
 public interface ClientInterfaceRMI extends Remote {
 	public void setModel(Model model) throws RemoteException;
-	public void notifyChanges(String message) throws RemoteException;
+	public String notifyChanges(String message) throws RemoteException;
 	public void setMessage(String message) throws RemoteException;
 	public void addClient() throws RemoteException;
 	public void removeClient() throws RemoteException;

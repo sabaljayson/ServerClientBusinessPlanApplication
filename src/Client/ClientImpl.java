@@ -13,14 +13,17 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.LinkedList;
 
 import Server.BP_Node;
 import Server.Person;
 import Server.ServerInterfaceRMI;
+import fx.Main;
 import fx.model.Model;
+import fx.viewPlanPage.PlanViewController;
 
-public class ClientImpl implements  ClientInterfaceRMI , Serializable  {
+public class ClientImpl implements  ClientInterfaceRMI , Serializable, Remote  {
 	/**
 	 * 
 	 */
@@ -28,14 +31,20 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable  {
 	public ServerInterfaceRMI proxy;
 	public Person person;
 	public BP_Node business;
-	public Model model;
+	public transient Model model;
 	public String currentMessage;
+	
+	ClientInterfaceRMI clientinter;
+	
+	
 	
 	public ClientImpl(ServerInterfaceRMI proxy){
 		this.proxy = proxy;
 		
 		try {
 			String hello = this.proxy.hello();
+			this.clientinter = (ClientInterfaceRMI) UnicastRemoteObject.exportObject(this, 0);
+			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -56,17 +65,27 @@ public class ClientImpl implements  ClientInterfaceRMI , Serializable  {
 		this.model = model;
 	}
 	
-	public void notifyChanges(String message) {
-//		System.out.println(this.person.username+" <- "+message);
+	public String notifyChanges(String message) {
 		this.currentMessage = message;
+		System.out.println("current message - " + this.currentMessage);
 		
-		System.out.println("The client has a model? "+ model);
-		if(model!= null) {
-			System.out.println("The client has a model "+ model);
+//		PlanViewController.alertPop(message);
+//		PlanViewController.notifychanges();
+		
+//		System.out.println("The client has a model "+ this.model);
+		if(this.model!= null) {
+			System.out.println("The client has a model "+ this.model);
 			this.model.notifyChanges(message);
 		}
+		return message;
 
 	}
+	
+	public String returnNotifyMessage() {
+		return this.currentMessage;
+	}
+	
+	
 	
 	public void setMessage(String message) {
 		this.currentMessage = message;

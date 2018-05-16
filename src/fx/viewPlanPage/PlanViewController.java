@@ -1,7 +1,8 @@
 package fx.viewPlanPage;
 
 import fx.model.Model;
-
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -29,7 +30,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.Optional;
-
+import java.util.concurrent.TimeUnit;
 
 import Server.Person;
 
@@ -375,7 +376,16 @@ public class PlanViewController {
 			alert.showAndWait();
 		}
     }
-
+	
+	
+	public static void notifychanges() {
+		System.out.println("123 cont");
+		Platform.runLater(() ->{
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setHeaderText("notify! the plan has a new version");
+			alert.showAndWait();
+		});
+	}
 
 	
 	@FXML
@@ -388,6 +398,8 @@ public class PlanViewController {
 			alert.showAndWait();
 		}
 		else {
+			
+			
 			// upload
 			model.uploadBP(model.getBusiness());
 			// write to server and read
@@ -447,10 +459,29 @@ public class PlanViewController {
     		this.main = main;
     }
     
-    public void alertPop(String message) {
-    	Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setHeaderText(message);
-		alert.showAndWait();
+    public static void alertPop(String message) {
+    	System.out.println(message);
+	      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		  alert.setHeaderText("there is a change");
+		  alert.showAndWait();
+//    	alertpop();
+    }
+    
+    
+    public static void alertpop() {
+    	
+    	
+		 Thread thread = new Thread(){
+			    public void run(){
+			      System.out.println("Thread Running");
+			      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				  alert.setHeaderText("there is a change");
+				  alert.showAndWait();
+			    }
+		};
+		
+		thread.run();
+    	
     }
     
     public void setModel(Model model) {
@@ -626,4 +657,20 @@ public class PlanViewController {
 		}
 		return treeItem;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -2,6 +2,7 @@ package fx;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,6 +16,7 @@ import fx.homePage.HomePageController;
 import fx.model.Model;
 import fx.newOrClonePlanPage.newOrClonePlanController;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -23,13 +25,15 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-	Model model = new Model();
+	public Model model = new Model();
 	public Stage window;
 	Pane mainView;
 	Scene loginscene;
 	Scene homepagescene, adduserscene, editplanscene, cloneplanscene, editstatusScene, viewplanscene;
 	newOrClonePlanController neworclonecont;
 	public ArrayList<BP_Node> dep_plans;
+	
+	PlanViewController editcont;
 	
 	// Clone Data for if the client wants to clone a plan
 	public ArrayList<String> data = new ArrayList<String>();
@@ -65,6 +69,14 @@ public class Main extends Application {
 		return homepagescene;
 	}
 
+	public static void notifychanges() {
+		System.out.println("123 main");
+//		Platform.runLater(() ->{
+//			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//			alert.setHeaderText("notify! the plan has a new version");
+//			alert.showAndWait();
+//		});
+	}
 	
 	public Scene homePage()  {
 	     try {
@@ -120,9 +132,9 @@ public class Main extends Application {
 	 			try {
 	 				Pane viewplanview = loader.load();
 	 				viewplanscene = new Scene(viewplanview);
-	 				PlanViewController cont = loader.getController();
-	 				cont.setMain(this);
-	 				cont.setModel(model);
+	 				editcont = loader.getController();
+	 				editcont.setMain(this);
+	 				editcont.setModel(model);
 	 			} catch (IOException e) {
 	 				
 	 				e.printStackTrace();
@@ -186,6 +198,9 @@ public class Main extends Application {
 	     return p;	
 	}
 	
+
+	
+	
 	 public boolean checkDuplicate(int year) {
 	    	for(int i = 0; i< this.dep_plans.size(); i ++) {
 	    		if(this.dep_plans.get(i).year == year) {
@@ -223,7 +238,41 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		
-        Application.launch(Main.class, (java.lang.String[])null);
+
+		//Application.launch(Main.class, (java.lang.String[])null);
+		Main main = new Main();
+        
+		Thread thread1 = new Thread(){
+			    public void run(){
+			      Application.launch(Main.class, (java.lang.String[])null);
+			    }
+		};
+
+		
+		 Thread thread2 = new Thread(){
+			    public void run(){
+			      System.out.println("Thread Running");
+					Boolean isDoneRunning = false;
+					while(isDoneRunning == false)
+					{
+						try {
+							TimeUnit.SECONDS.sleep(1);
+							
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+//						main.model.returnNotifyMessage();
+						if(main.model.client.person != null) {
+							System.out.println(main.model.client.person.username);
+						}
+					}			      
+			    }
+		};
+		
+		
+		thread1.start();
+//		thread2.start();
+		
     }
 
 }

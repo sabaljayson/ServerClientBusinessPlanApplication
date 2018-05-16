@@ -1,4 +1,4 @@
-package fx.test.SceneTest;
+package fx.test.Sprint5Test;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import fx.test.TextFXBase;
 import javafx.scene.input.KeyCode;
 
-public class CommentTest extends TextFXBase{
+public class Part2CommentTest extends TextFXBase{
 	
 		//Login Screen ID's
 		final String LoginBtn_ID = "#LoginConfirm";

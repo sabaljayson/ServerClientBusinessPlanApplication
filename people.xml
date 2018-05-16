@@ -39,21 +39,21 @@
      <string>username</string>
      <void method="set">
       <object idref="Person1"/>
-      <string>q</string>
+      <string>user1</string>
      </void>
     </void>
     <void class="Server.Person" method="getField">
      <string>password</string>
      <void method="set">
       <object idref="Person1"/>
-      <string>1</string>
+      <string>password</string>
      </void>
     </void>
     <void class="Server.Person" method="getField">
      <string>department</string>
      <void method="set">
       <object idref="Person1"/>
-      <string>Math</string>
+      <string>CS</string>
      </void>
     </void>
     <void class="Server.Person" method="getField">
@@ -71,21 +71,21 @@
      <string>username</string>
      <void method="set">
       <object idref="Person2"/>
-      <string>w</string>
+      <string>user2</string>
      </void>
     </void>
     <void class="Server.Person" method="getField">
      <string>password</string>
      <void method="set">
       <object idref="Person2"/>
-      <string>2</string>
+      <string>password</string>
      </void>
     </void>
     <void class="Server.Person" method="getField">
      <string>department</string>
      <void method="set">
       <object idref="Person2"/>
-      <string>Computer Science</string>
+      <string>CS</string>
      </void>
     </void>
     <void class="Server.Person" method="getField">
@@ -103,21 +103,92 @@
      <string>username</string>
      <void method="set">
       <object idref="Person3"/>
-      <string>123</string>
+      <string>user3</string>
      </void>
     </void>
     <void class="Server.Person" method="getField">
      <string>password</string>
      <void method="set">
       <object idref="Person3"/>
-      <string>123</string>
+      <string>password</string>
      </void>
     </void>
     <void class="Server.Person" method="getField">
      <string>department</string>
      <void method="set">
       <object idref="Person3"/>
-      <string>123</string>
+      <string>CS</string>
+     </void>
+    </void>
+    <void class="Server.Person" method="getField">
+     <string>admin</string>
+     <void method="set">
+      <object idref="Person3"/>
+      <boolean>true</boolean>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Server.Person" id="Person4">
+    <void class="Server.Person" method="getField">
+     <string>username</string>
+     <void method="set">
+      <object idref="Person4"/>
+      <string>user4</string>
+     </void>
+    </void>
+    <void class="Server.Person" method="getField">
+     <string>password</string>
+     <void method="set">
+      <object idref="Person4"/>
+      <string>password</string>
+     </void>
+    </void>
+    <void class="Server.Person" method="getField">
+     <string>department</string>
+     <void method="set">
+      <object idref="Person4"/>
+      <string>CS</string>
+     </void>
+    </void>
+    <void class="Server.Person" method="getField">
+     <string>admin</string>
+     <void method="set">
+      <object idref="Person4"/>
+      <boolean>true</boolean>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Server.Person" id="Person5">
+    <void class="Server.Person" method="getField">
+     <string>username</string>
+     <void method="set">
+      <object idref="Person5"/>
+      <string>user5</string>
+     </void>
+    </void>
+    <void class="Server.Person" method="getField">
+     <string>password</string>
+     <void method="set">
+      <object idref="Person5"/>
+      <string>password</string>
+     </void>
+    </void>
+    <void class="Server.Person" method="getField">
+     <string>department</string>
+     <void method="set">
+      <object idref="Person5"/>
+      <string>CS</string>
+     </void>
+    </void>
+    <void class="Server.Person" method="getField">
+     <string>admin</string>
+     <void method="set">
+      <object idref="Person5"/>
+      <boolean>true</boolean>
      </void>
     </void>
    </object>

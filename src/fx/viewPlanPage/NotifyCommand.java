@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import fx.ICommand;
 
-public class NotifyCommand implements ICommand{
+public class NotifyCommand implements ICommand, Serializable{
 
 	/**
 	 * 
@@ -20,9 +20,10 @@ public class NotifyCommand implements ICommand{
 	
 	@Override
 	public void execute(String command) {
-
-		this.cont.alertPop(command);
-
+		if(command != null) {
+			System.out.println("command notify!!");
+			this.cont.alertPop(command);
+		}
 		
 	}
 

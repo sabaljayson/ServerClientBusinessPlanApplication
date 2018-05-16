@@ -1,4 +1,4 @@
-package Client;
+package fx.test.Sprint5Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,6 +17,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import Client.ClientImpl;
+import Client.ViewingPlanPair;
 import Server.BP_Node;
 import Server.BusinessEntity;
 import Server.Person;

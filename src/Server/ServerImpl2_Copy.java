@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 
 
 
-public class ServerImpl implements ServerInterfaceRMI{
+public class ServerImpl2_Copy implements ServerInterfaceRMI{
 	
 	
 	LinkedList<Person> people;
@@ -43,7 +43,7 @@ public class ServerImpl implements ServerInterfaceRMI{
 	ArrayList<NotifyCommand> commands = new ArrayList<NotifyCommand>();
 	
 	//constructor
-	public ServerImpl() throws RemoteException {
+	public ServerImpl2_Copy() throws RemoteException {
 		super();
 		businessPlans = new LinkedList<BP_Node>();
 		people = new LinkedList<Person>();
@@ -408,7 +408,7 @@ public class ServerImpl implements ServerInterfaceRMI{
 
 //			System.setProperty("java.rmi.server.hostname", "127.0.1.1");
 
-			ServerImpl obj = new ServerImpl();
+			ServerImpl2_Copy obj = new ServerImpl2_Copy();
 			ServerInterfaceRMI stub = (ServerInterfaceRMI) UnicastRemoteObject.exportObject(obj,0);
 			
 			// Bind the remote object's stub in the registry

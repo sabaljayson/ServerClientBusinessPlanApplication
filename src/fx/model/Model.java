@@ -14,6 +14,7 @@ import Server.Person;
 import Server.ServerImpl;
 import Server.ServerInterfaceRMI;
 import fx.ICommand;
+import javafx.scene.control.Alert;
 
 public class Model implements Serializable {
 
@@ -24,8 +25,10 @@ public class Model implements Serializable {
 	Person currPerson;
 	ICommand command;
 	
-	ClientImpl client;
+	public ClientImpl client;
 
+	
+	
 	
 	void setupServer() {
 		try {
@@ -47,6 +50,26 @@ public class Model implements Serializable {
 
 	}
 	
+//	public static void notifychanges() {
+//		System.out.println("123 model");
+////		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+////		alert.setHeaderText("notify! the plan has a new version");
+////		alert.showAndWait();
+//	}
+//	
+//	
+//	
+//	public String returnNotifyMessage() {
+//		System.out.println("in model keep checking... "+this.client.notifyChanges(null));
+//		if(this.command != null) {
+//			this.command.execute(this.client.returnNotifyMessage());
+//		}
+//		return this.client.returnNotifyMessage();
+//	}
+//	
+	
+	
+	
 	
 	public void clientRegistry(){	
 		Registry registry;
@@ -55,8 +78,8 @@ public class Model implements Serializable {
 					
 			ServerInterfaceRMI server = (ServerInterfaceRMI) registry.lookup("server");
 //			System.out.println("if model get the server"+server);
-			this.client = new ClientImpl(server);
-			
+			this.client = new ClientImpl(server, this);
+			this.client.model = this;
 			System.err.println("Client ready") ;
 			
 		} catch (RemoteException e) {
@@ -83,9 +106,11 @@ public class Model implements Serializable {
 	}
 	
 	public void notifyChanges(String message) {
-		//System.out.println(message+" within model");
-		this.client.model = this;
-		this.command.execute(message);
+		System.out.println(message+" within model");
+		if(this.client.currentMessage != null) {
+			this.command.execute(this.client.currentMessage);
+		}
+		//this.command.execute(message);
 	}
 	
 	public void addClient() {

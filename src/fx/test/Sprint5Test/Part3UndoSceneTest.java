@@ -1,4 +1,4 @@
-package fx.test.SceneTest;
+package fx.test.Sprint5Test;
 
 import static org.testfx.assertions.api.Assertions.assertThat;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 import fx.test.TextFXBase;
 import javafx.scene.input.KeyCode;
 
-public class UndoSceneTest extends TextFXBase{
+public class Part3UndoSceneTest extends TextFXBase{
 	//Login Screen ID's
 		final String LoginBtn_ID = "#LoginConfirm";
 		final String UserID = "#UsernameBox";
@@ -88,11 +88,11 @@ public class UndoSceneTest extends TextFXBase{
 			clickOn(undo_ID);
 			sleep(100);
 			type(KeyCode.ENTER);
-			sleep(100);
+			sleep(300);
 			clickOn(redo_ID);
 			sleep(100);
 			type(KeyCode.ENTER);
-			sleep(100);
+			sleep(300);
 			
 			//text remove comment
 			clickOn(commentRemoveBtn_ID);
@@ -180,6 +180,8 @@ public class UndoSceneTest extends TextFXBase{
 			clickOn(undo_ID);
 			sleep(500);
 			type(KeyCode.ENTER); 
+			clickOn(redo_ID);
+			sleep(500);
 			clickOn(redo_ID);
 			sleep(500);
 			clickOn(redo_ID);
