@@ -10,7 +10,7 @@ Besides the basic functionality of viewing and editing business plans, clients c
 Each business plan is stored in the tree structure and each node of the business plan can be viewed by TreeView in JavaFX. The Model View Controller pattern is used throughout the implimentation. 
 Unit tests and TestFX are used for testing. 
 
-
+![Example_UI_Page](/ExampleUIPage.png?raw=true "Example_UI_Page")
 -------------------
 
 If you want to run the GUI:
