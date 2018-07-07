@@ -1,6 +1,17 @@
-link to git: https://code.centre.edu/zeyang/Sprint5_RMI
+Zeyang Huang
+CSC 300 - Final Project - Sprint 5
+Due May 16, 2018
 
-git@code.centre.edu:zeyang/Sprint5_RMI.git
+The purpose of this software is to facilitate the server/client interaction that allows for the storage and access of business plans. 
+The server will store business plans, various users, as well as the current users that are viewing a certain plan in the ecosystem and their pertinent information such as password, department, admin status, plan information, etc,  will be stored both in the server and locally through RMI and XML serialization. 
+
+Besides the basic functionality of viewing and editing business plans, clients can be notified if the plan they are currently viewing has been saved to another version through the Observer Pattern. Multiple users can leave comments and any user is able to view, add, and delete any comments in a specific business plan node. Users are also able to use the redo and undo buttons to retrieve the lost comments or business plan nodes after they clicked the remove button through the Singleton Pattern and Command Pattern. Further, administrators are able to add new users, new departments, and change a specific plans' editing status to either view only or editable.  
+
+Each business plan is stored in the tree structure and each node of the business plan can be viewed by TreeView in JavaFX. The Model View Controller pattern is used throughout the implimentation. 
+Unit tests and TestFX are used for testing. 
+
+
+-------------------
 
 If you want to run the GUI:
 1. run "ServerImpl.java" under the server package -  "server ready" should be shown in the console
@@ -52,10 +63,3 @@ https://docs.google.com/document/d/1DZ9bWWqcibmSv8SvNUy1PCT8WwQzgLLBqbLU1Pt0-kw/
 PowerPoint for Sprint 5:
 https://docs.google.com/presentation/d/1KwopLJwss9mslX6zbNeleQWUfuk8aUpDRk2MhYeuDoI/edit?usp=sharing
 
-
-
-'''
-Zeyang Huang
-CSC 300 - Final Project - Sprint 5
-Due May 16, 2018
-'''
