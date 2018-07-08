@@ -1,4 +1,4 @@
-Zeyang Huang
+Zeyang -
 CSC 300 - Final Project - Sprint 5
 Due May 16, 2018
 
